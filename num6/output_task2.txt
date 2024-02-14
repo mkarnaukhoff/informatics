@@ -1,0 +1,25 @@
+Вывести в файл output.txt товары, у которых вес больше среднего веса всех товаров:
+Apple02
+Apple03
+Apple04
+Apple05
+Apple06
+Apple07
+Apple10
+Начальный:
+Apple01 67.9
+Apple02 73.1
+Apple03 85.1
+Apple04 19.5
+Apple05 31.4
+Apple06 81.4
+Apple07 22
+Apple08 21
+Apple09 52.9
+Apple10 50.2
+Вывести в файл output.txt 5 самых дорогих товаров:
+Apple01	67.9
+Apple02	73.1
+Apple03	85.1
+Apple05	31.4
+Apple06	81.4
