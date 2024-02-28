@@ -29,6 +29,11 @@ public:
         count = 0;
     }
 
+    Node *getTail()
+    {
+        return tail;
+    }
+
     int size()
     {
         return count;
@@ -125,6 +130,12 @@ public:
         }
         return NULL;
     }
+
+    void destroy()
+    {
+        while (head != NULL)
+            popFront();
+    }
 };
 
 int getRandom()
@@ -137,168 +148,237 @@ int getRandom()
 
 int main()
 {
-    OneLinkedList list;
-    int n;
+    // OneLinkedList list;
+    // int n;
 
-    // Номер 1
+    // // Номер 1
 
-    for (int i = 0; i < 7; i++)
+    // for (int i = 0; i < 7; i++)
+    // {
+    //     // cin >> n;
+    //     list.pushBack(i);
+    // }
+    // list.print();
+    // Node *tempnode = list.getNode(0);
+
+    // for (tempnode; tempnode; tempnode = tempnode->next)
+    // {
+    //     cout << tempnode->key << ' ' << tempnode << ' ' << tempnode->next << endl;
+    // }
+
+    // // Добавить в линейный список 50 элементов. Вывести список на экран.
+
+    // for (int i = 0; i < 50; i++)
+    // {
+    //     list.pushBack(getRandom());
+    // }
+    // list.print();
+
+    // // Вывести на экран первый элемент списка
+
+    // cout << list.getNode(0)->key << endl;
+
+    // // Вывести на экран второй элемент списка
+
+    // cout << list.getNode(1)->key << endl;
+
+    // // Вывести на экран последний элемент списка
+
+    // cout << list.getNode(list.size() - 1)->key << endl;
+
+    // // Вывести на экран предпоследний элемент списка
+
+    // cout << list.getNode(list.size() - 2)->key << endl;
+
+    // // Вывести на экран элемент списка, стоящий на позиции k считая от начала. Если такого элемента нет, вывести сообщение.
+
+    // int k = 10;
+    // if (k < list.size())
+    //     cout << list.getNode(k - 1)->key << endl;
+    // else
+    //     cout << "Bad k";
+
+    // // Вывести на экран часть списка от k до m, где k<m номера элементов считая от начала списка.
+
+    // k = 10;
+    // int m = 15;
+    // if (m > list.size())
+    //     cout << "Bad m" << endl;
+    // else
+    // {
+    //     Node *temphead = list.getNode(k - 1);
+    //     Node *tempheadm = list.getNode(m);
+    //     while (temphead != tempheadm)
+    //     {
+    //         cout << temphead->key << " ";
+    //         temphead = temphead->next;
+    //     }
+    //     cout << endl;
+    // }
+
+    // // Найти в линейном списке наибольший элемент
+
+    // Node *temphead = list.getNode(0);
+    // int keyMax = temphead->key;
+    // for (temphead; temphead; temphead = temphead->next)
+    // {
+    //     if (temphead->key > keyMax)
+    //     {
+    //         keyMax = temphead->key;
+    //     }
+    // }
+    // cout << keyMax << endl;
+
+    // // Найти в линейном списке наименьший элемент и его номер
+
+    // temphead = list.getNode(0);
+    // int keyMin = temphead->key;
+    // int indexMin = 0;
+    // int counter = 1;
+    // for (temphead; temphead; temphead = temphead->next)
+    // {
+    //     if (temphead->key < keyMin)
+    //     {
+    //         keyMin = temphead->key;
+    //         indexMin = counter;
+    //     }
+    //     counter++;
+    // }
+    // cout << keyMin << ' ' << indexMin << endl;
+
+    // // Найти в линейном списке наименьший положительный элемент или вывести сообщение, что такого нет.
+
+    // temphead = list.getNode(0);
+    // bool flag = 1;
+    // for (temphead; temphead; temphead = temphead->next)
+    // {
+    //     if (temphead->key > 0)
+    //     {
+    //         if (flag)
+    //         {
+    //             flag = 0;
+    //             keyMin = temphead->key;
+    //         }
+    //         else
+    //         {
+    //             if (temphead->key < keyMin)
+    //                 keyMin = temphead->key;
+    //         }
+    //     }
+    // }
+
+    // if (flag)
+    //     cout << "Такого числа нет";
+    // else
+    //     cout << keyMin << endl;
+
+    // // Линейный поиск
+
+    // temphead = list.linearSearch(2);
+    // if (temphead == NULL)
+    //     cout << "Нет такого числа" << endl;
+    // else
+    //     cout << temphead << ' ' << temphead->key << endl;
+
+    // // Файлы
+    // fstream input;
+    // ofstream output;
+    // output.open("input.txt");
+    // for (int i = 0; i < 1000; i++)
+    // {
+    //     output << i << endl;
+    // }
+    // output.close();
+
+    // input.open("input.txt");
+    // output.open("output.txt");
+
+    // OneLinkedList s;
+
+    // for (int n; input >> n;)
+    // {
+    //     if (abs(n) % 100 / 10 == 7)
+    //     {
+    //         s.pushBack(n);
+    //     }
+    // }
+    // input.close();
+
+    // temphead = s.getNode(0);
+    // for (temphead; temphead; temphead = temphead->next)
+    // {
+    //     output << temphead->key << endl;
+    // }
+    // output.close();
+
+    // Урок 2
+
+    OneLinkedList list2;
+
+    fstream input2;
+    ofstream output2;
+
+    // Прочитать файл в связный список. Вывести список на экран.
+
+    input2.open("input2.txt");
+
+    for (int n; input2 >> n;)
     {
-        // cin >> n;
-        list.pushBack(i);
+        list2.pushFront(n);
     }
-    list.print();
-    Node *tempnode = list.getNode(0);
+    input2.close();
+    list2.print();
 
-    for (tempnode; tempnode; tempnode = tempnode->next)
+    // Найти количество элементов и в списке.
+
+    cout << list2.size() << endl;
+
+    // Удалить первые k элементов списка. Вывести список на экран.
+
+    int k_del = 5;
+
+    for (int i = 0; i < k_del; i++)
     {
-        cout << tempnode->key << ' ' << tempnode << ' ' << tempnode->next << endl;
+        list2.popFront();
     }
+    list2.print();
 
-    // Добавить в линейный список 50 элементов. Вывести список на экран.
+    // Найти сколько элементов списка меньше заданного числа
 
-    for (int i = 0; i < 50; i++)
+    int numCheck = 5;
+    int countLess = 0;
+    Node *tempNode = list2.getNode(0);
+    for (tempNode; tempNode; tempNode = tempNode->next)
     {
-        list.pushBack(getRandom());
+        if (tempNode->key > numCheck)
+            countLess++;
     }
-    list.print();
+    cout << countLess << endl;
 
-    // Вывести на экран первый элемент списка
+    // Удалить второй элемент списка
 
-    cout << list.getNode(0)->key << endl;
+    list2.popAfter(list2.getNode(0));
+    list2.print();
 
-    // Вывести на экран второй элемент списка
+    // Удалить третий элемент списка
 
-    cout << list.getNode(1)->key << endl;
+    list2.popAfter(list2.getNode(1));
+    list2.print();
 
-    // Вывести на экран последний элемент списка
+    // Удалить последний элемент списка
 
-    cout << list.getNode(list.size() - 1)->key << endl;
+    list2.popAfter(list2.getNode(list2.size() - 2));
+    list2.print();
 
-    // Вывести на экран предпоследний элемент списка
+    // Удалить последний элемент списка
 
-    cout << list.getNode(list.size() - 2)->key << endl;
+    list2.popAfter(list2.getNode(list2.size() - 3));
+    list2.print();
 
-    // Вывести на экран элемент списка, стоящий на позиции k считая от начала. Если такого элемента нет, вывести сообщение.
+    // Удалить весь массивs
 
-    int k = 10;
-    if (k < list.size())
-        cout << list.getNode(k - 1)->key << endl;
-    else
-        cout << "Bad k";
-
-    // Вывести на экран часть списка от k до m, где k<m номера элементов считая от начала списка.
-
-    k = 10;
-    int m = 15;
-    if (m > list.size())
-        cout << "Bad m" << endl;
-    else
-    {
-        Node *temphead = list.getNode(k - 1);
-        Node *tempheadm = list.getNode(m);
-        while (temphead != tempheadm)
-        {
-            cout << temphead->key << " ";
-            temphead = temphead->next;
-        }
-        cout << endl;
-    }
-
-    // Найти в линейном списке наибольший элемент
-
-    Node *temphead = list.getNode(0);
-    int keyMax = temphead->key;
-    for (temphead; temphead; temphead = temphead->next)
-    {
-        if (temphead->key > keyMax)
-        {
-            keyMax = temphead->key;
-        }
-    }
-    cout << keyMax << endl;
-
-    // Найти в линейном списке наименьший элемент и его номер
-
-    temphead = list.getNode(0);
-    int keyMin = temphead->key;
-    int indexMin = 0;
-    int counter = 1;
-    for (temphead; temphead; temphead = temphead->next)
-    {
-        if (temphead->key < keyMin)
-        {
-            keyMin = temphead->key;
-            indexMin = counter;
-        }
-        counter++;
-    }
-    cout << keyMin << ' ' << indexMin << endl;
-
-    // Найти в линейном списке наименьший положительный элемент или вывести сообщение, что такого нет.
-
-    temphead = list.getNode(0);
-    bool flag = 1;
-    for (temphead; temphead; temphead = temphead->next)
-    {
-        if (temphead->key > 0)
-        {
-            if (flag)
-            {
-                flag = 0;
-                keyMin = temphead->key;
-            }
-            else
-            {
-                if (temphead->key < keyMin)
-                    keyMin = temphead->key;
-            }
-        }
-    }
-
-    if (flag)
-        cout << "Такого числа нет";
-    else
-        cout << keyMin << endl;
-
-    // Линейный поиск
-
-    temphead = list.linearSearch(2);
-    if (temphead == NULL)
-        cout << "Нет такого числа" << endl;
-    else
-        cout << temphead << ' ' << temphead->key << endl;
-
-    // Файлы
-    fstream input;
-    ofstream output;
-    output.open("input.txt");
-    for (int i = 0; i < 1000; i++)
-    {
-        output << i << endl;
-    }
-    output.close();
-
-    input.open("input.txt");
-    output.open("output.txt");
-
-    OneLinkedList s;
-
-    for (int n; input >> n;)
-    {
-        if (abs(n) % 100 / 10 == 7)
-        {
-            s.pushBack(n);
-        }
-    }
-    input.close();
-
-    temphead = s.getNode(0);
-    for (tempnode; temphead; temphead = temphead->next)
-    {
-        output << temphead->key << endl;
-    }
-    output.close();
+    list2.destroy();
+    list2.print();
 
     return 0;
 }
