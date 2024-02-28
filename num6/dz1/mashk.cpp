@@ -39,7 +39,7 @@ int main(){
  for (i=0;i<n;i++){
   for (j=i+1;j<n;j++){
    d=dist(m[i],m[j]);
-   if (d<d1 && d <d2 && d<d3){
+   if (d < d1 && d <d2 && d<d3){
     d1=d2;
     d2=d3;
     d3=d;
